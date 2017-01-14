@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#Script that will echo its own filename followed by only the odd numbered arguments given when it was executed. All on a new line.
+
+#Echoes its own filename.
+echo $0
+
+#Echoes the first argument then shifts twice; continues this while there are 2 or more arguments.
+while [ $# -gt 1 ]
+do
+    echo $1
+    shift
+    shift
+done
+
+#Checks to see if there is still an argument left after all shifts and echoes it if there is. This accounts for the last argument in an odd number of inputs.
+if [ $# -eq 1 ]
+then
+    echo $1
+fi

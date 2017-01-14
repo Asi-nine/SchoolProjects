@@ -1,0 +1,94 @@
+obelix.gaul.csd.uwo.ca[25]% make test
+operation 1.4 2 1 2
+First complex number: 1.400000 + i(2.000000)
+Second complex number: 1.000000 + i(2.000000)
+Multiplication result (first x second): -2.600000 + i(4.800000)
+Division result (first / second): 1.080000 + i(-0.160000)
+Addition result (first + second): 2.400000 + i(4.000000)
+Subtraction result (first - second): 0.400000 + i(0.000000)
+operation 6 0 6.6 0
+First complex number: 6.000000 + i(0.000000)
+Second complex number: 6.600000 + i(0.000000)
+Multiplication result (first x second): 39.600000 + i(0.000000)
+Division result (first / second): 0.909091 + i(0.000000)
+Addition result (first + second): 12.600000 + i(0.000000)
+Subtraction result (first - second): -0.600000 + i(0.000000)
+operation 0 2 0 4.5
+First complex number: 0.000000 + i(2.000000)
+Second complex number: 0.000000 + i(4.500000)
+Multiplication result (first x second): -9.000000 + i(0.000000)
+Division result (first / second): 0.444444 + i(0.000000)
+Addition result (first + second): 0.000000 + i(6.500000)
+Subtraction result (first - second): 0.000000 + i(-2.500000)
+operation 0 2.4 0 4
+First complex number: 0.000000 + i(2.400000)
+Second complex number: 0.000000 + i(4.000000)
+Multiplication result (first x second): -9.600000 + i(0.000000)
+Division result (first / second): 0.600000 + i(0.000000)
+Addition result (first + second): 0.000000 + i(6.400000)
+Subtraction result (first - second): 0.000000 + i(-1.600000)
+operation 0 2 0 4
+First complex number: 0.000000 + i(2.000000)
+Second complex number: 0.000000 + i(4.000000)
+Multiplication result (first x second): -8.000000 + i(0.000000)
+Division result (first / second): 0.500000 + i(0.000000)
+Addition result (first + second): 0.000000 + i(6.000000)
+Subtraction result (first - second): 0.000000 + i(-2.000000)
+operation 1 0 0 4
+First complex number: 1.000000 + i(0.000000)
+Second complex number: 0.000000 + i(4.000000)
+Multiplication result (first x second): 0.000000 + i(4.000000)
+Division result (first / second): 0.000000 + i(-0.250000)
+Addition result (first + second): 1.000000 + i(4.000000)
+Subtraction result (first - second): 1.000000 + i(-4.000000)
+operation 0 6.4 5.2 0
+First complex number: 0.000000 + i(6.400000)
+Second complex number: 5.200000 + i(0.000000)
+Multiplication result (first x second): 0.000000 + i(33.280000)
+Division result (first / second): 0.000000 + i(1.230769)
+Addition result (first + second): 5.200000 + i(6.400000)
+Subtraction result (first - second): -5.200000 + i(6.400000)
+operation 0 0 1 4
+First complex number: 0.000000 + i(0.000000)
+Second complex number: 1.000000 + i(4.000000)
+Multiplication result (first x second): 0.000000 + i(0.000000)
+Division result (first / second): 0.000000 + i(0.000000)
+Addition result (first + second): 1.000000 + i(4.000000)
+Subtraction result (first - second): -1.000000 + i(-4.000000)
+operation 7 2 0 0
+First complex number: 7.000000 + i(2.000000)
+Second complex number: 0.000000 + i(0.000000)
+Multiplication result (first x second): 0.000000 + i(0.000000)
+ERROR: Input will result in division by zero.
+No division was computed
+Addition result (first + second): 7.000000 + i(2.000000)
+Subtraction result (first - second): 7.000000 + i(2.000000)
+operation 0 0 0 0
+First complex number: 0.000000 + i(0.000000)
+Second complex number: 0.000000 + i(0.000000)
+Multiplication result (first x second): 0.000000 + i(0.000000)
+ERROR: Input will result in division by zero.
+No division was computed
+Addition result (first + second): 0.000000 + i(0.000000)
+Subtraction result (first - second): 0.000000 + i(0.000000)
+operation -1 -1 -1 -1
+First complex number: -1.000000 + i(-1.000000)
+Second complex number: -1.000000 + i(-1.000000)
+Multiplication result (first x second): 0.000000 + i(2.000000)
+Division result (first / second): 1.000000 + i(0.000000)
+Addition result (first + second): -2.000000 + i(-2.000000)
+Subtraction result (first - second): 0.000000 + i(0.000000)
+
+
+obelix.gaul.csd.uwo.ca[31]% make testfew
+operation 0 1 2
+Invalid number of arguments. Four arguments of type double are required at execution.
+*** Error code 1
+make: Fatal error: Command failed for target `testfew'
+
+obelix.gaul.csd.uwo.ca[23]% make testmany
+operation 0 0 0 0 0
+Invalid number of arguments. Four arguments of type double are required at execution.
+*** Error code 1
+make: Fatal error: Command failed for target `testmany'
+

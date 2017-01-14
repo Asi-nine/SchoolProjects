@@ -1,0 +1,22 @@
+<div>
+	SHOWINGS LIST:<br><br>
+ <table style="width:70%">
+  <tr>
+    <th>Date and Time</th>
+    <th>Showing ID</th>
+    <th>Movie ID</th>
+    <th>Room Number</th>
+    <th>Ticket Price</th>
+  </tr>
+{% for showings in showings %}
+    <span><tr>
+    <td>{{ showings.0 }}</td>
+    <td>{{ showings.1 }}</td>
+    <td>{{ showings.2 }}</td>
+    <td>{{ showings.3 }}</td>
+    <td>{{ showings.4 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+    <a href="/staff_showings">GO BACK</a>
+</div>

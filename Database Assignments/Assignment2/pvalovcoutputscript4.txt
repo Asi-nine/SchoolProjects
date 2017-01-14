@@ -1,0 +1,357 @@
+--------------
+show databases
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+pvalovcdb
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom
+--------------
+create view TempView as select GoesTo.ShowingID as ShowingID, Name, GoesTo.CustomerID as CustomerID, Rating from GoesTo, Showing, Movie where GoesTo.ShowingID = Showing.ShowingID and Showing.MovieID=Movie.MovieID
+--------------
+
+--------------
+select * from TempView
+--------------
+
+ShowingID	Name	CustomerID	Rating
+333	Star Wars	222	5
+334	Star Wars	222	5
+334	Star Wars	223	5
+334	Star Wars	224	5
+334	Star Wars	225	5
+334	Star Wars	226	5
+334	Star Wars	229	5
+340	Aloha	222	1
+340	Aloha	223	1
+346	Tommy Boy	222	4
+347	Two Weeks Notice	229	5
+348	Jingle All The Way	223	5
+--------------
+create view TempView2 as select FirstName, LastName, Name as Movie, Rating, Customer.CustomerID as CustomerID from TempView, Customer where TempView.CustomerID =Customer.CustomerID
+--------------
+
+--------------
+select * from TempView2
+--------------
+
+FirstName	LastName	Movie	Rating	CustomerID
+Will	Beldman	Star Wars	5	222
+Will	Beldman	Star Wars	5	222
+Peter	Valovcik	Star Wars	5	223
+Bill	Clinton	Star Wars	5	224
+Hilary	Clinton	Star Wars	5	225
+Donald	Trump	Star Wars	5	226
+Barack	Obama	Star Wars	5	229
+Will	Beldman	Aloha	1	222
+Peter	Valovcik	Aloha	1	223
+Will	Beldman	Tommy Boy	4	222
+Barack	Obama	Two Weeks Notice	5	229
+Peter	Valovcik	Jingle All The Way	5	223
+--------------
+create view AverageRatings as select FirstName,LastName, Movie, AVG(Rating)as Rating from TempView2 group by CustomerID, Rating
+--------------
+
+--------------
+select * from AverageRatings
+--------------
+
+FirstName	LastName	Movie	Rating
+Will	Beldman	Aloha	1.0000
+Will	Beldman	Tommy Boy	4.0000
+Will	Beldman	Star Wars	5.0000
+Peter	Valovcik	Aloha	1.0000
+Peter	Valovcik	Star Wars	5.0000
+Bill	Clinton	Star Wars	5.0000
+Hilary	Clinton	Star Wars	5.0000
+Donald	Trump	Star Wars	5.0000
+Barack	Obama	Star Wars	5.0000
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+AverageRatings
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TempView
+TempView2
+TheatreRoom
+--------------
+drop view AverageRatings
+--------------
+
+--------------
+drop view TempView
+--------------
+
+--------------
+drop view TempView2
+--------------
+
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom
+--------------
+select CustomerID from Customer where LastName="Trump"
+--------------
+
+CustomerID
+226
+--------------
+select * from GoesTo
+--------------
+
+ShowingID	CustomerID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	226	100.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+348	223	8.00	5
+--------------
+delete from GoesTo where CustomerID="226"
+--------------
+
+--------------
+select * from GoesTo
+--------------
+
+ShowingID	CustomerID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+348	223	8.00	5
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom
+--------------
+select * from Customer
+--------------
+
+CustomerID	FirstName	LastName	Sex	Email
+222	Will	Beldman	M	wbeldma@uwo.ca
+223	Peter	Valovcik	M	pvalovc@uwo.ca
+224	Bill	Clinton	M	billy@prez.com
+225	Hilary	Clinton	F	nextprezmaybe@prez.com
+226	Donald	Trump	M	nextprezalso@prez.com
+227	Gary	Johnson	M	nextpreztoo@prez.com
+228	Sue	Stein	F	nextprezaswell@prez.com
+229	Barack	Obama	M	lastprez@prez.com
+--------------
+delete from Customer where CustomerID="226"
+--------------
+
+--------------
+select * from Customer
+--------------
+
+CustomerID	FirstName	LastName	Sex	Email
+222	Will	Beldman	M	wbeldma@uwo.ca
+223	Peter	Valovcik	M	pvalovc@uwo.ca
+224	Bill	Clinton	M	billy@prez.com
+225	Hilary	Clinton	F	nextprezmaybe@prez.com
+227	Gary	Johnson	M	nextpreztoo@prez.com
+228	Sue	Stein	F	nextprezaswell@prez.com
+229	Barack	Obama	M	lastprez@prez.com
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom
+--------------
+select * from Showing
+--------------
+
+ShowingID	Date	Time	RoomNumber	MovieID
+333	2016-02-11	21:30:00	1	100
+334	2016-02-11	19:30:00	2	100
+335	2016-02-11	19:00:00	3	101
+336	2016-02-11	21:00:00	2	111
+337	2016-03-12	19:00:00	1	102
+338	2016-03-12	21:00:00	1	103
+339	2016-03-13	19:00:00	2	103
+340	2016-03-20	19:00:00	1	103
+341	2016-03-20	21:00:00	1	104
+342	2016-03-20	19:00:00	2	109
+344	2016-03-21	19:00:00	1	110
+345	2016-03-22	21:00:00	3	108
+346	2016-03-22	20:30:00	2	107
+347	2016-03-23	22:00:00	1	110
+348	2016-03-27	18:00:00	3	112
+--------------
+select ShowingID from Showing where RoomNumber="3"
+--------------
+
+ShowingID
+335
+345
+348
+--------------
+select * from GoesTo
+--------------
+
+ShowingID	CustomerID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+348	223	8.00	5
+--------------
+delete from GoesTo where ShowingID = "335"
+--------------
+
+--------------
+delete from GoesTo where ShowingID = "345"
+--------------
+
+--------------
+delete from GoesTo where ShowingID = "348"
+--------------
+
+--------------
+select * from GoesTo
+--------------
+
+ShowingID	CustomerID	Price	Rating
+333	222	4.00	5
+334	222	10.00	5
+334	223	30.00	5
+334	224	20.00	5
+334	225	5.00	5
+334	229	5.00	5
+340	222	12.00	1
+340	223	5.00	1
+346	222	5.00	4
+347	229	12.00	5
+--------------
+select * from Showing
+--------------
+
+ShowingID	Date	Time	RoomNumber	MovieID
+333	2016-02-11	21:30:00	1	100
+334	2016-02-11	19:30:00	2	100
+335	2016-02-11	19:00:00	3	101
+336	2016-02-11	21:00:00	2	111
+337	2016-03-12	19:00:00	1	102
+338	2016-03-12	21:00:00	1	103
+339	2016-03-13	19:00:00	2	103
+340	2016-03-20	19:00:00	1	103
+341	2016-03-20	21:00:00	1	104
+342	2016-03-20	19:00:00	2	109
+344	2016-03-21	19:00:00	1	110
+345	2016-03-22	21:00:00	3	108
+346	2016-03-22	20:30:00	2	107
+347	2016-03-23	22:00:00	1	110
+348	2016-03-27	18:00:00	3	112
+--------------
+delete from Showing where RoomNumber="3"
+--------------
+
+--------------
+select * from Showing
+--------------
+
+ShowingID	Date	Time	RoomNumber	MovieID
+333	2016-02-11	21:30:00	1	100
+334	2016-02-11	19:30:00	2	100
+336	2016-02-11	21:00:00	2	111
+337	2016-03-12	19:00:00	1	102
+338	2016-03-12	21:00:00	1	103
+339	2016-03-13	19:00:00	2	103
+340	2016-03-20	19:00:00	1	103
+341	2016-03-20	21:00:00	1	104
+342	2016-03-20	19:00:00	2	109
+344	2016-03-21	19:00:00	1	110
+346	2016-03-22	20:30:00	2	107
+347	2016-03-23	22:00:00	1	110
+--------------
+select * from TheatreRoom
+--------------
+
+RoomNumber	Capacity
+1	30
+2	5
+3	100
+4	30
+5	6
+--------------
+delete from TheatreRoom where RoomNumber="3"
+--------------
+
+--------------
+select * from TheatreRoom
+--------------
+
+RoomNumber	Capacity
+1	30
+2	5
+4	30
+5	6
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom

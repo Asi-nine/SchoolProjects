@@ -1,0 +1,26 @@
+<div>
+	SEARCH ALL SHOWINGS:<br><br>
+	Genre: 
+	<form action="/searched_showings" method="post">
+		<select name="chosengenre">
+			{% for genres in genres %}
+				<option>{{ genres.0 }}</option>
+			{% endfor %}
+		</select><br>
+		Start Date: 
+		<select name="startdate">
+			{% for dates in dates %}
+				<option>{{ dates.0 }}</option>
+			{% endfor %}
+		</select>
+		 End Date:
+		<select name="enddate">
+			{% for dates in dates %}
+				<option>{{ dates.0 }}</option>
+			{% endfor %}
+		</select><br>
+		<input type="checkbox" name="notfull">Exclude Sold Out Showings</input><br>
+		Movie Name: <input type="text" name="moviename">
+    	<input class="btn" type="submit" value="Submit">
+	</form>
+</div>

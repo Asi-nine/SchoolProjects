@@ -1,0 +1,29 @@
+Trace of user with ID: 3
+Sun Oct 23 00:05:47 2016  --->  Deleted Trace Log.
+Sun Oct 23 00:05:47 2016  --->  Was promted to delete log of trace but chose not to.
+Sun Oct 23 00:05:52 2016  --->  Logged out.
+Trace of user with ID: 3
+Sun Oct 23 01:04:31 2016  --->  Login
+Sun Oct 23 01:04:36 2016  --->  Changed trace target to User with ID: 2
+Sun Oct 23 01:04:49 2016  --->  Some muggle changed theme to Harry Potter.
+Trace of user with ID: 2
+Sun Oct 23 17:33:26 2016  --->  Login
+Sun Oct 23 17:33:29 2016  --->  Logged out.
+Trace of user with ID: 2
+Sun Oct 23 19:04:07 2016  --->  Login
+Sun Oct 23 19:05:40 2016  --->  Deposit of $100.000000 to Chequing.
+
+Sun Oct 23 19:06:29 2016  --->  Logged out.
+Trace of user with ID: 2
+Sun Oct 23 19:06:32 2016  --->  Login
+Sun Oct 23 19:06:57 2016  --->  Viewed Savings balance
+Sun Oct 23 19:07:57 2016  --->  Logged out.
+Trace of user with ID: 2
+Sun Oct 23 22:44:05 2016  --->  Login
+Sun Oct 23 22:44:07 2016  --->  Logged out.
+Trace of user with ID: 2
+Mon Oct 24 05:09:51 2016  --->  Login
+Mon Oct 24 05:09:59 2016  --->  Deposit of $1.000000 to Chequing.
+
+Mon Oct 24 05:10:04 2016  --->  Viewed Chequing balance
+Mon Oct 24 05:10:07 2016  --->  Logged out.

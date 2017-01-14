@@ -1,0 +1,22 @@
+<div>
+	CUSTOMER LIST:<br><br>
+ <table style="width:70%">
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Sex</th>
+    <th>Email Address</th>
+    <th>Customer ID</th>
+  </tr>
+{% for customers in customers %}
+    <span><tr>
+    <td>{{ customers.0 }}</td>
+    <td>{{ customers.1 }}</td>
+    <td>{{ customers.2 }}</td>
+    <td>{{ customers.3 }}</td>
+    <td>{{ customers.4 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+    <a href="staff_customers">GO BACK</a>
+</div>

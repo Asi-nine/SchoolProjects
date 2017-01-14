@@ -1,0 +1,37 @@
+<div>
+	SHOWINGS YOU'VE ATTENDED LIST:<br><br>
+ <table style="width:100%">
+  <tr>
+    <th>Showing ID</th>
+    <th>Rating</th>
+    <th>Movie Name</th>    
+    <th>Date and Time</th>    
+  </tr>
+{% for attends in attends %}
+    <span><tr>
+    <td>{{ attends.0 }}</td>
+    <td>{{ attends.1 }}</td>
+    <td>{{ attends.2 }}</td>
+    <td>{{ attends.3 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+To rate or rerate a showing, select its showing ID, and a rating below and then hit submit.<br><br>
+	<form action="/update_ratings" method="post">
+		Showing ID
+		<select name="showid">
+			{% for attends in attends %}
+				<option>{{ attends.0 }}</option>
+			{% endfor %}
+		</select> <br>
+		Rating
+		<select name="newrating">
+		<option>  1  </option>
+		<option>  2  </option>
+		<option>  3  </option>
+		<option>  4  </option>
+		<option>  5  </option>
+		</select><br>
+    	<input class="btn" type="submit" value="Submit">
+	</form>
+</div>

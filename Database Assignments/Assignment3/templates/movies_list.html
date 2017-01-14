@@ -1,0 +1,18 @@
+<div>
+	MOVIES LIST:<br><br>
+ <table style="width:70%">
+  <tr>
+    <th>Movie Name</th>
+    <th>ID</th>
+    <th>Year</th>
+  </tr>
+{% for movies in movies %}
+    <span><tr>
+    <td>{{ movies.0 }}</td>
+    <td>{{ movies.1 }}</td>
+    <td>{{ movies.2 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+    <a href="staff_movies">GO BACK</a>
+</div>

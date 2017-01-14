@@ -1,0 +1,18 @@
+#!/bin/sh
+
+#Script that echoes the last argument that is given with execution of the script.
+
+#Do nothing when no arguments are given.
+if [ $# = 0 ]
+then
+    :
+
+else
+    #Keep shifting while the total number of arguments is not one. When there is only one it should be the last argument.
+    while [ $# != 1 ]
+    do
+        shift
+    done
+    #Echoes the last argument.
+    echo $1
+fi

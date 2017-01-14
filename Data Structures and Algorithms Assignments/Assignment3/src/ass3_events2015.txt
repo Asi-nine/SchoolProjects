@@ -1,0 +1,35 @@
+Time: 2946.9 Type: IN_SERVICE   Num:    17
+Time:    9.9 Type: ARRIVAL      Num:    33
+Time:    0.9 Type: ARRIVAL      Num:    16 
+Time:    0.1 Type: DEPART       Num:     8
+Time: 1551.2 Type: IN_SERVICE   Num:    23
+Time: 1600.1 Type: DEPART       Num:     8
+Time: 1600.1 Type: ARRIVAL      Num:     8
+Time:   66.8 Type: ARRIVAL      Num:     2
+Time: 1600.0 Type: ALL_DONE 
+Time:  100.1 Type: DEPART       Num:    18
+Time:  123.3 Type: IN_SERVICE   Num:    48
+Time:  160.5 Type: IN_SERVICE   Num:   102
+Time:  165.0 Type: IN_SERVICE   Num:     1
+Time:   66.6 Type: ARRIVAL      Num:    66
+Time:   36.6 Type: ARRIVAL      Num:    36
+Time:   36.7 Type: DEPART       Num:    37
+Time:   36.5 Type: DEPART       Num:    35
+Time:   36.8 Type: DEPART       Num:    38
+Time:   36.9 Type: DEPART       Num:    39
+Time:  179.1 Type: IN_SERVICE   Num:    48
+Time:  230.5 Type: IN_SERVICE   Num:   102
+Time:   81.2 Type: IN_SERVICE   Num:     1
+Time: 1500.0 Type: SNAPSHOT 
+Time: 1500.1 Type: DEPART       Num:   100
+Time: 1230.5 Type: IN_SERVICE   Num:    19
+Time: 1857.2 Type: IN_SERVICE   Num:     8 
+Time: 1853.2 Type: DEPART       Num:  1000
+Time: 2257.9 Type: IN_SERVICE   Num:    11
+Time: 2746.4 Type: IN_SERVICE   Num:     2
+Time:  750.0 Type: SNAPSHOT 
+Time:    1.1 Type: DEPART       Num:     2
+Time:    5.1 Type: DEPART       Num:     8
+Time:    9.9 Type: DEPART       Num:     9
+Time: 2400.0 Type: SNAPSHOT 
+Time: 2400.0 Type: ALL_DONE 

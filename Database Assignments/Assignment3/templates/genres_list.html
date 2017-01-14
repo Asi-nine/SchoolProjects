@@ -1,0 +1,16 @@
+<div>
+	MOVIES LIST BY GENRE:<br><br>
+ <table style="width:70%">
+  <tr>
+    <th>Genre</th>
+    <th>Movie Name</th>
+  </tr>
+{% for genres in genres %}
+    <span><tr>
+    <td>{{ genres.0 }}</td>
+    <td>{{ genres.1 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+    <a href="staff_genres">GO BACK</a>
+</div>

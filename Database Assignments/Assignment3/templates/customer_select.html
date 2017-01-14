@@ -1,0 +1,27 @@
+<div>
+	Select your name and email:<br>
+	<form action="/customer_submit" method="post">
+			First Name:<br>
+			<select name="fname">
+				{% for customersf in customersf %}
+					<option>{{ customersf.0 }}</option>
+				{% endfor %}
+			</select><br><br>
+			Last Name:<br>
+			<select name="lname">
+				{% for customersl in customersl %}
+					<option>{{ customersl.0 }}</option>
+				{% endfor %}
+			</select><br><br>
+			Email:<br>
+			<select name="email">
+				{% for customerse in customerse %}
+					<option>{{ customerse.0 }}</option>
+				{% endfor %}
+			</select><br><br>
+
+    	<input class="btn" type="submit" value="Submit">
+ 	</form>
+	<br> <br> <br>
+    <a href="/">GO BACK</a>
+</div>

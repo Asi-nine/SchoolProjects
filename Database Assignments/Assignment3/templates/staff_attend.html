@@ -1,0 +1,28 @@
+<div>
+	ATTEND LIST:<br><br>
+ <table style="width:100%">
+  <tr>
+    <th>Rating</th>
+    <th>Customer ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Showing ID</th>
+    <th>Date and Time</th>    
+    <th>Movie ID</th>    
+    <th>Movie Name</th>    
+  </tr>
+{% for attends in attends %}
+    <span><tr>
+    <td>{{ attends.0 }}</td>
+    <td>{{ attends.1 }}</td>
+    <td>{{ attends.2 }}</td>
+    <td>{{ attends.3 }}</td>
+    <td>{{ attends.4 }}</td>
+    <td>{{ attends.5 }}</td>
+    <td>{{ attends.6 }}</td>
+    <td>{{ attends.7 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+    <a href="staff">GO BACK</a>
+</div>

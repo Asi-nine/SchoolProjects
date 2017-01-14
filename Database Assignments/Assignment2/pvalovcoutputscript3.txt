@@ -1,0 +1,261 @@
+--------------
+show databases
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+pvalovcdb
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom
+--------------
+select LastName from Customer
+--------------
+
+LastName
+Beldman
+Valovcik
+Clinton
+Clinton
+Trump
+Johnson
+Stein
+Obama
+--------------
+select distinct(LastName) from Customer
+--------------
+
+LastName
+Beldman
+Valovcik
+Clinton
+Trump
+Johnson
+Stein
+Obama
+--------------
+select FirstName, LastName, Email from Customer where Sex = "M"
+--------------
+
+FirstName	LastName	Email
+Will	Beldman	wbeldma@uwo.ca
+Peter	Valovcik	pvalovc@uwo.ca
+Bill	Clinton	billy@prez.com
+Donald	Trump	nextprezalso@prez.com
+Gary	Johnson	nextpreztoo@prez.com
+Barack	Obama	lastprez@prez.com
+--------------
+select Name from Movie, Genre where Movie.MovieID=Genre.MovieID and Genre.Genre="Comedy"
+--------------
+
+Name
+Tommy Boy
+There's Something About Mary
+Two Weeks Notice
+Back To The Future
+Jingle All The Way
+--------------
+select Name, Year from Movie where Year like "199%" order by Year
+--------------
+
+Name	Year
+Pulp Fiction	1994
+Tommy Boy	1995
+Jingle All The Way	1996
+Midnight In The Garden Of Good and Evil	1997
+There's Something About Mary	1998
+--------------
+select date_format(Date, '%M-%d-%Y') as ShowingDate, date_format(Time, '%h %i %s %p') as Showing_Time, Capacity from Showing, TheatreRoom, Movie where Movie.MovieID=Showing.MovieID and Showing.RoomNumber=TheatreRoom.RoomNumber and Movie.Name="Star Wars"
+--------------
+
+ShowingDate	Showing_Time	Capacity
+February-11-2016	09 30 00 PM	30
+February-11-2016	07 30 00 PM	5
+--------------
+select Name from Movie where Name like "%the%"
+--------------
+
+Name
+The Martian
+The Empire Strikes Back
+Midnight In The Garden Of Good and Evil
+There's Something About Mary
+Back To The Future
+Jingle All The Way
+--------------
+select FirstName, Lastname, Name, Date from Customer, Movie, Showing, GoesTo where Customer.CustomerID=GoesTo.CustomerID and GoesTo.ShowingID=Showing.ShowingID and Showing.MovieID=Movie.MovieID and Date>"2016-02-29"
+--------------
+
+FirstName	Lastname	Name	Date
+Will	Beldman	Aloha	2016-03-20
+Will	Beldman	Tommy Boy	2016-03-22
+Peter	Valovcik	Aloha	2016-03-20
+Peter	Valovcik	Jingle All The Way	2016-03-27
+Barack	Obama	Two Weeks Notice	2016-03-23
+--------------
+select distinct(concat_ws(' ',FirstName,LastName)) as SciFi_Customers from Customer, Showing, GoesTo, Genre where Customer.CustomerID=GoesTo.CustomerID and GoesTo.ShowingID=Showing.ShowingID and Showing.MovieID=Genre.MovieID and Genre="SciFi"
+--------------
+
+SciFi_Customers
+Will Beldman
+Peter Valovcik
+Bill Clinton
+Hilary Clinton
+Donald Trump
+Barack Obama
+--------------
+select Name from Movie where MovieID not in (select MovieID from Showing)
+--------------
+
+Name
+The Empire Strikes Back
+Midnight In The Garden Of Good and Evil
+--------------
+select Name from Movie where MovieID not in (select MovieID from Showing, GoesTo where Showing.ShowingID=GoesTo.ShowingID)
+--------------
+
+Name
+Up
+Pulp Fiction
+The Martian
+The Empire Strikes Back
+Midnight In The Garden Of Good and Evil
+Die Hard
+There's Something About Mary
+Back To The Future
+--------------
+create view TempView as (select Name from Movie where MovieID not in (select MovieID from Showing)) union (select Name from Movie where MovieID not in (select MovieID from Showing, GoesTo where Showing.ShowingID=GoesTo.ShowingID))
+--------------
+
+--------------
+select distinct(Name) from TempView where Name not in (select distinct(Name) from GoesTo, Showing, Movie where GoesTo.ShowingID=Showing.ShowingID and Showing.MovieID=Movie.MovieID)
+--------------
+
+Name
+The Empire Strikes Back
+Midnight In The Garden Of Good and Evil
+Up
+Pulp Fiction
+The Martian
+Die Hard
+There's Something About Mary
+Back To The Future
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TempView
+TheatreRoom
+--------------
+drop view TempView
+--------------
+
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom
+--------------
+select Year, count(Name) as NumberOfMovies from Movie group by Year
+--------------
+
+Year	NumberOfMovies
+1977	1
+1980	1
+1985	1
+1988	1
+1994	1
+1995	1
+1996	1
+1997	1
+1998	1
+2002	1
+2009	1
+2015	2
+--------------
+select sum(Price) as TotalSales from GoesTo
+--------------
+
+TotalSales
+216.00
+--------------
+create view TempView as select GoesTo.ShowingID, CustomerID, Capacity from GoesTo, Showing, TheatreRoom where GoesTo.ShowingID = Showing.ShowingID and Showing.RoomNumber =TheatreRoom.RoomNumber
+--------------
+
+--------------
+select * from TempView
+--------------
+
+ShowingID	CustomerID	Capacity
+333	222	30
+340	222	30
+340	223	30
+347	229	30
+334	222	5
+346	222	5
+334	223	5
+334	224	5
+334	225	5
+334	226	5
+334	229	5
+348	223	100
+--------------
+select ShowingID, count(CustomerID) as NumberOfCustomers, Capacity from TempView group by ShowingID
+--------------
+
+ShowingID	NumberOfCustomers	Capacity
+333	1	30
+334	6	5
+340	2	30
+346	1	5
+347	1	30
+348	1	100
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TempView
+TheatreRoom
+--------------
+drop view TempView
+--------------
+
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom

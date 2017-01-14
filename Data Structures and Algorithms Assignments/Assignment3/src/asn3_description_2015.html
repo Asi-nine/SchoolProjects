@@ -1,0 +1,237 @@
+<html>
+<head>
+<TITLE>CS1027, Assignment 3</TITLE>
+<link rel="stylesheet" href="td.css" type="text/css" media="all" />
+</head>
+<body bgcolor="#FFFFFF">
+
+<CENTER>
+<h1><b>CS1027b Computer Science Fundamentals II</b></h1>
+<h2><b>Assignment 3</b></h2>
+</CENTER>
+
+<p>Due Tuesday, March 10th, 11:55pm via Owl.</p>
+
+<h2>Overview</h2>
+
+<p> 
+Simulation is a good method for evaluating supermarket checkout strategies.
+Which is best: a single queue feeding all checkout counters, a single regular
+queue feeding each checkout counter (all of equal status) and a 
+number of express checkout counters (for customers buying 12 or fewer items)
+and the rest being regular checkout queues. Using realistic assumptions
+about customer arrival time, mean number of item to purchase, etc. it is possible
+to simulate the checkout process to determine which setup provides the
+minimum average (weighted by number of items) waiting customer times. 
+The important thing in the above brief description of simulation is
+that one or more queues must be used. This assignment focuses on manipulation
+of a single event queue for a supermarket counter setup.
+</p>
+
+<p>
+During simulation, we must be able to determine the next event that will occur.
+The problem is this event may not be the first event on the queue. One way
+to handle this problem is to use a <code>priority queue</code>. This strategy
+uses a heap to provide <code>O(log(n))</code> enqueuing and dequeuing 
+operations for queues of size n.
+There are Java classes that implement this but for this assignment we will
+use <code>O(n)</code> enqueueing and dequeueing operations implemented using our QueueADT class.
+</p>
+
+<h2>Functional Specifications</h2>
+
+<p>
+You are provided with a zip file 
+<a href="http://www.csd.uwo.ca/courses/CS1027b/assignments/Asn1/ass3Files.zip">ass3Files.zip</a>
+which contains a number of classes. 
+I/O is done as on assignment 1, by using the <code>InStringFile.java</code> class.
+The standard class for queueing as presented in class, <code>LinkedQueue</code>,
+<code>QueueADT</code>, <code>LinearNode</code> are also provided.
+</p>
+
+<p>
+An <code>Event</code> class is provided that gives the definition of an event.
+Its has fields for time (double), type (String) and number of items (int).
+It has the appropriate getters and setters and a <code>toString()</code>  method.
+This class uses the <code>Service.java</code> class for a method called 
+<code>doubleFormat</code> used in Event's <code>toString()</code> method (to
+perform minor pretty printing). Both
+of these classes are complete and do not need any modifications.
+</p>
+
+<p>  A complete <code>Main.java</code> class is also provided. 
+The static <code>main</code> method reads an event file, from argvs[0], for example
+<code>little_ass3_events2015.txt</code> or <code>ass3_events2015.txt</code>.
+This is an unordered queue of events. Each event has an eventTime field (double) and
+an eventType field (String, one of ARRIVAL, IN_SERVICE, DEPART, SNAPSHOT and ALL_DONE).
+The ARRIVAL, IN_SERVICE and DEPART events represent a customer's arrival at a checkout counter,
+the customer being served at the counter and the customer leaving the counter.
+Each has a 3rd field, eventNumItems (int) giving the number of items the customer has.
+The <code>main</code> method reads this file and prints out the data
+in unsorted order. It also computes the minimum eventTime value for
+all the ALL_DONE events (if there are more than one) in a local
+variable called <code>minAllDoneTime</code>.
+</p>
+
+<p> 
+You are required to add two methods to the <code>EventQueue</code>. This class has a
+constructor (provided). You are required to write two methods:
+<code>insertEvent()</code> and <code>deleteEvents()</code>.
+<ol>
+<li> The <code>insertEvent()</code> method adds one event object to an eventQueue object.
+This queue can be assumed to be sorted by time (ascending order, smallest to largest time value,
+or earliest to letest time). We insert an event by dequeueing
+events from eventQueue until we find the insertion place, add the new event and restore
+the eventQueue to its original state (plus one event for the newly inserted event).
+It will be necessary to use use a second queue to perform this operation. Because
+you may (potentially) have to look at each event in the queue, this operation is <code>O(n)</code> 
+for an <code>n</code> event queue. We also can use the queue's <code>toString()</code> method to
+print out the queue contents before and after insertion of the queue. A
+variable <code>debug</code> controls whether debugging printing occurs or not</li>
+<li> The <code>deleteEvents()</code> method deletes all events with times >=
+the lowest eventTime value for an ALL_DONE event (i.e. minDoneAllTime). 
+That means there may be more than
+one ALL_DONE event!!! If there are two or more ALL_DONE events with the minimum value,
+we keep the first occurrence in the output list.
+There may also be no ALL_DONE event, in which case a WARNING
+message should be printed. Again, the queue's <code>toString()</code> method can
+be used to print the queue contents before and after insertion.
+As for <code>insertEvent</code>, a second queue may be needed to perform this O(n) operation.</li> 
+</ol>
+Lastly, the <code>EmptyCollectionException.java</code> exception class handles 
+the possibility of trying to dequeue and empty queue.
+</p>
+<p>
+For a small event file (5 events), we read one line at a time in Main.java,
+and insert the event information into the eventQueue in the correct order. 
+Then we delete all events in eventQueue with times greater than the smallest time
+for any ALL_DONE event from
+the sorted queue (but we do not delete the first ALL_DONE event at that time). 
+For debugging purposes (debug=true in Main.java), we print the queue before 
+and after each insert and delete operation. That code remains in the EventQueue.java 
+file but the 2 places where insertion code and deletion code has been removed are
+indicated by comments. Put you code there.
+The debug output can be verbose,
+in that case set the debug variable to false (debug=false in Main.java)
+to reduce this output significantly.
+</p>
+ <p>
+Only your <code>EventCode.java</code> file set to read
+<code>ass3_events2015.txt</code> is required.
+
+<p>
+For our small event file we get:
+<pre>
+  1  Time:    9.90 Type: ARRIVAL      Number of items: 33
+
+INSERT EVENT:
+Event time:    9.90 Event type: ARRIVAL Event number of items: 33
+
+Event Queue before new event enqueued
+-------------------------------------
+Empty Queue
+
+Event Queue after new event enqueued
+------------------------------------
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+  2  Time:    0.90 Type: ARRIVAL      Number of items: 16
+
+INSERT EVENT:
+Event time:    0.90 Event type: ARRIVAL Event number of items: 16
+
+Event Queue before new event enqueued
+-------------------------------------
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+Event Queue after new event enqueued
+------------------------------------
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+  3  Time:    9.00 Type: ALL_DONE    
+
+INSERT EVENT:
+Event time:    9.00 Event type: ALL_DONE
+
+Event Queue before new event enqueued
+-------------------------------------
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+Event Queue after new event enqueued
+------------------------------------
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 9.0 Type: ALL_DONE Number of items not specified
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+  4  Time:    0.10 Type: DEPART       Number of items: 8
+
+INSERT EVENT:
+Event time:    0.10 Event type: DEPART Event number of items: 8
+
+Event Queue before new event enqueued
+-------------------------------------
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 9.0 Type: ALL_DONE Number of items not specified
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+Event Queue after new event enqueued
+------------------------------------
+Time: 0.1 Type: DEPART Number of items: 8
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 9.0 Type: ALL_DONE Number of items not specified
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+  5  Time:    4.00 Type: ALL_DONE    
+
+INSERT EVENT:
+Event time:    4.00 Event type: ALL_DONE
+
+Event Queue before new event enqueued
+-------------------------------------
+Time: 0.1 Type: DEPART Number of items: 8
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 9.0 Type: ALL_DONE Number of items not specified
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+Event Queue after new event enqueued
+------------------------------------
+Time: 0.1 Type: DEPART Number of items: 8
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 4.0 Type: ALL_DONE Number of items not specified
+Time: 9.0 Type: ALL_DONE Number of items not specified
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+5 events read and inserted in order in the eventQueue
+
+Event Queue before all events with eventTime<=4.0 deleted
+------------------------------------------------------
+Time: 0.1 Type: DEPART Number of items: 8
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 4.0 Type: ALL_DONE Number of items not specified
+Time: 9.0 Type: ALL_DONE Number of items not specified
+Time: 9.9 Type: ARRIVAL Number of items: 33
+
+Event Queue after all events with eventTime<=4.0 deleted
+-----------------------------------------------------
+Time: 0.1 Type: DEPART Number of items: 8
+Time: 0.9 Type: ARRIVAL Number of items: 16
+Time: 4.0 Type: ALL_DONE Number of items not specified
+</pre>
+</p>
+
+<h2>Non-functional Specifications</h2>
+
+<ul>
+<li>Your program has to be compilable under Eclipse.</li>
+<li>Use Javadoc comments for each class and method. All significant variables must be commented.</li>
+<li>Use Java conventions and good Java programming techniques (meaningful variable names,
+  conventions for variable and constant names, etc). Indent your code properly.</li> 
+<li>Remember that assignments are to be done individually and must be your own work.</li>
+</ul>
+
+</body>
+
+
+</html>

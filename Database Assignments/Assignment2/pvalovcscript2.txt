@@ -1,0 +1,138 @@
+/* File to load and insert data into a database representing a movie theatre */
+
+/* 	Author: Peter Valovcik
+	Date: Nov 11, 2016
+*/
+show databases;
+
+use pvalovcdb;
+
+show tables;
+
+/* load the given data file's data into the database for Movies */
+load data infile '/home/vagrant/fall2015data.txt' into table Movie fields terminated by ',';
+
+/* inserting a movie of my choice into the Movies table */
+
+select * from Movie;
+
+insert into Movie (MovieID, Name, Year) values ("112", "Jingle All The Way", "1996");
+
+select * from Movie;
+
+/* Inserting all of the given customers into the Customer table. */
+
+select * from Customer;
+
+insert into Customer (CustomerID, FirstName, LastName, Sex, Email) values ("222", "Will", "Beldman", "M", "wbeldma@uwo.ca");
+insert into Customer values ("223", "Peter", "Valovcik", "M", "pvalovc@uwo.ca");
+insert into Customer values ("224", "Bill", "Clinton", "M", "billy@prez.com");
+insert into Customer values ("225", "Hilary", "Clinton", "F", "nextprezmaybe@prez.com");
+insert into Customer values ("226", "Donald", "Trump", "M", "nextprezalso@prez.com");
+insert into Customer values ("227", "Gary", "Johnson", "M", "nextpreztoo@prez.com");
+insert into Customer values ("228", "Jill", "Stein", "F", "nextprezaswell@prez.com");
+insert into Customer values ("229", "Barack", "Obama", "M", "lastprez@prez.com");
+
+select * from Customer;
+
+/* Inserting the given genres into the Genre table */
+
+select * from Genre;
+
+insert into Genre (MovieID, Genre) values ("100", "Action");
+insert into Genre values ("100", "SciFi");
+insert into Genre values ("101", "Animated");
+insert into Genre values ("102", "Action");
+insert into Genre values ("103", "Romance");
+insert into Genre values ("104", "Action");
+insert into Genre values ("104", "SciFi");
+insert into Genre values ("105", "Action");
+insert into Genre values ("105", "SciFi");
+insert into Genre values ("106", "Drama");
+insert into Genre values ("107", "Comedy");
+insert into Genre values ("108", "Action");
+insert into Genre values ("109", "Comedy");
+insert into Genre values ("110", "Comedy");
+insert into Genre values ("110", "Romance");
+insert into Genre values ("111", "SciFi");
+insert into Genre values ("111", "Action");
+insert into Genre values ("111", "Comedy");
+insert into Genre values ("112", "Comedy");
+insert into Genre values ("112", "Family");
+
+select * from Genre;
+
+/* Inserting the given theatre rooms into the TheatreRoom table. */
+
+select * from TheatreRoom;
+
+insert into TheatreRoom (RoomNumber, Capacity) values ("1", "30");
+insert into TheatreRoom values ("2", "5");
+insert into TheatreRoom values ("3", "100");
+insert into TheatreRoom values ("4", "30");
+insert into TheatreRoom values ("5", "6");
+
+select * from TheatreRoom;
+
+/* Inserting the given showings into the Showing table. */
+
+select * from Showing;
+
+insert into Showing(ShowingID, Date, Time, RoomNumber, MovieID) values ("333", "2016-02-11", "21:30", "1", "100");
+insert into Showing values ("334", "2016-02-11", "19:30", "2", "100");
+insert into Showing values ("335", "2016-02-11", "19:00", "3", "101");
+insert into Showing values ("337", "2016-03-12", "19:00", "1", "102");
+insert into Showing values ("338", "2016-03-12", "21:00", "1", "103");
+insert into Showing values ("339", "2016-03-13", "19:00", "2", "103");
+insert into Showing values ("340", "2016-03-20", "19:00", "1", "103");
+insert into Showing values ("341", "2016-03-20", "21:00", "1", "104");
+insert into Showing values ("346", "2016-03-22", "20:30", "2", "107");
+insert into Showing values ("345", "2016-03-22", "21:00", "3", "108");
+insert into Showing values ("342", "2016-03-20", "19:00", "2", "109");
+insert into Showing values ("344", "2016-03-21", "19:00", "1", "110");
+insert into Showing values ("347", "2016-03-23", "22:00", "1", "110");
+insert into Showing values ("336", "2016-02-11", "21:00", "2", "111");
+insert into Showing values ("348", "2016-03-27", "18:00", "3", "112");
+
+select * from Showing;
+
+/* Inserting who went to which showing into the GoesTo table */
+
+select * from GoesTo;
+
+insert into GoesTo(ShowingID, CustomerID, Price, Rating) values ("333", "222", "4", "5");
+insert into GoesTo values ("340", "222", "12", "1");
+insert into GoesTo values ("334", "222", "10", "3");
+insert into GoesTo values ("346", "222", "5", "4");
+insert into GoesTo values ("334", "223", "30", "5");
+insert into GoesTo values ("340", "223", "5", "1");
+insert into GoesTo values ("334", "224", "20", "4");
+insert into GoesTo values ("334", "226", "100", "2");
+insert into GoesTo values ("334", "225", "5", "1");
+insert into GoesTo values ("347", "229", "12", "5");
+insert into GoesTo values ("334", "229", "5", "3");
+insert into GoesTo values ("348", "223", "8", "5");
+
+select * from GoesTo;
+
+/* Setting the name of any customer with first name JilL to Sue. */
+
+select * from Customer;
+
+update Customer set FirstName = "Sue" where FirstName = "Jill";
+
+select * from Customer;
+
+/* Set the all ratings of Star Wars to be 5. Uses joins and also shows all attended showings, as well as only ones related to Star Wars and how they have changed.  */
+
+select * from GoesTo;
+
+select Name, Showing.ShowingID, Rating from GoesTo, Movie, Showing where Movie.MovieID=Showing.MovieID and Showing.ShowingID = GoesTo.ShowingID and Movie.Name = "Star Wars"; 
+
+update GoesTo, Movie, Showing set Rating ="5" where Movie.MovieID=Showing.MovieID and Showing.ShowingID = GoesTo.ShowingID and Movie.Name = "Star Wars"; 
+
+select Name, Showing.ShowingID, Rating from GoesTo, Movie, Showing where Movie.MovieID=Showing.MovieID and Showing.ShowingID = GoesTo.ShowingID and Movie.Name = "Star Wars";
+
+select * from GoesTo;
+
+show tables;

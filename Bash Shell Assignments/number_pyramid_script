@@ -1,0 +1,71 @@
+#!/bin/sh
+
+#Script that takes a positive, non-zero integer input and creates a horizontal pyramid with the same number of columns as the input that starts at 0 and goes up to 1 less than the input.
+
+#Clears the terminal and asks the user for an input that is read.
+clear
+echo "Please enter the number of columns you would like:"
+read input
+
+#A variable that will be used to make sure the input contains no non-digit characters.
+positiveintegertest=`echo "$input" | grep ".*[^0-9].*"`
+
+#Checks to make sure that the input was a positive, non-zero integer consisting of digits only. Forces the user to redo the input until it matches that criteria.
+until [ "$input" -gt 0 2> /dev/null ] && [ "$positiveintegertest" != "$input" 2> /dev/null ]
+do
+    clear
+    echo "That was not a valid number of columns (no negatives or zero are allowed, use digits representing a positive integer)."
+    echo "Please re-enter the number of columns you would like:"
+    read input
+    positiveintegertest=`echo "$input" | grep ".*[^0-9].*"`
+done
+
+clear
+
+#Variables needed for the first half of the pyramid output.
+inputvalue=`expr $input - 2`
+i=0
+j=0
+
+#Start looping from 0 and go up to 2 below the input value.
+while [ $i -le $inputvalue ]
+do  
+    #Nested loop to start echoing values begining with zero and going up to the value of the outer loop.
+    while [ $j -le $i ]
+    do
+        
+        #Echoes without a new line then increments the inner loop
+        echo -n "$j "
+        j=`expr $j + 1`
+            
+    done
+    
+    #Reset variable being echoed to zero again, increment the outer loop, and prints a new line.
+    j=0
+    i=`expr $i + 1` 
+    echo
+    
+done
+
+#Variable based on input set again for second half of the loop.
+inputvalue=`expr $input - 1`
+
+#Start looping from 1 less than the input value and go down to 0.
+while [ $inputvalue -ge 0 ]
+do
+    i=0
+    #Nested loop to echo values from zero up to the current outer loop variable value.
+    while [ $i -le $inputvalue ]
+    do
+        
+        #Echoes without a new line then increments the inner loop.
+        echo -n "$i "
+        i=`expr $i + 1`
+    done
+    
+    #Decrements the outer loop and prints a new line.
+    inputvalue=`expr $inputvalue - 1`
+    echo
+done
+
+

@@ -1,0 +1,309 @@
+test cases
+
+
+obelix.gaul.csd.uwo.ca[13]% prog1 
+Please enter a positive integer (decimal numbers will ignore the value passed the decimal):
+10
+#1 value of pi: 4.000000
+#2 value of pi: 3.200000
+#3 value of pi: 2.400000
+#4 value of pi: 3.200000
+#5 value of pi: 3.600000
+#6 value of pi: 2.800000
+#7 value of pi: 3.200000
+#8 value of pi: 3.200000
+#9 value of pi: 2.000000
+#10 value of pi: 3.600000
+The mean is: 3.120000
+The standard deviation is: 0.560000
+
+
+
+obelix.gaul.csd.uwo.ca[14]% prog1
+Please enter a positive integer (decimal numbers will ignore the value passed the decimal):
+100
+#1 value of pi: 2.960000
+#2 value of pi: 3.000000
+#3 value of pi: 3.200000
+#4 value of pi: 3.280000
+#5 value of pi: 3.200000
+#6 value of pi: 3.320000
+#7 value of pi: 3.080000
+#8 value of pi: 3.160000
+#9 value of pi: 3.000000
+#10 value of pi: 3.200000
+The mean is: 3.140000
+The standard deviation is: 0.117644
+
+
+obelix.gaul.csd.uwo.ca[15]% prog1
+Please enter a positive integer (decimal numbers will ignore the value passed the decimal):
+1000
+#1 value of pi: 3.116000
+#2 value of pi: 3.180000
+#3 value of pi: 3.132000
+#4 value of pi: 3.104000
+#5 value of pi: 3.172000
+#6 value of pi: 3.140000
+#7 value of pi: 3.244000
+#8 value of pi: 3.180000
+#9 value of pi: 3.140000
+#10 value of pi: 3.064000
+The mean is: 3.147200
+The standard deviation is: 0.047153
+
+
+
+obelix.gaul.csd.uwo.ca[16]% prog1
+Please enter a positive integer (decimal numbers will ignore the value passed the decimal):
+100000
+#1 value of pi: 3.139960
+#2 value of pi: 3.134680
+#3 value of pi: 3.152320
+#4 value of pi: 3.138120
+#5 value of pi: 3.146280
+#6 value of pi: 3.140200
+#7 value of pi: 3.137720
+#8 value of pi: 3.139800
+#9 value of pi: 3.139560
+#10 value of pi: 3.131880
+The mean is: 3.140052
+The standard deviation is: 0.005426
+
+
+
+obelix.gaul.csd.uwo.ca[17]% prog1
+Please enter a positive integer (decimal numbers will ignore the value passed the decimal):
+10000000
+#1 value of pi: 3.142070
+#2 value of pi: 3.141547
+#3 value of pi: 3.141402
+#4 value of pi: 3.142432
+#5 value of pi: 3.141300
+#6 value of pi: 3.142146
+#7 value of pi: 3.141336
+#8 value of pi: 3.141383
+#9 value of pi: 3.141352
+#10 value of pi: 3.140161
+The mean is: 3.141513
+The standard deviation is: 0.000593
+
+
+obelix.gaul.csd.uwo.ca[37]% prog1                   Please enter a positive integer (decimal numbers will ignore the value passed the decimal):
+0
+That was an invalid input. Please enter a positive integer:
+-1
+That was an invalid input. Please enter a positive integer:
+-123123
+That was an invalid input. Please enter a positive integer:
+asd
+That was an invalid input. Please enter a positive integer:
+
+
+s
+That was an invalid input. Please enter a positive integer:
+
+
+
+
+obelix.gaul.csd.uwo.ca[38]% prog2
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+1
+
+    1
+    
+    
+    
+obelix.gaul.csd.uwo.ca[39]% prog2
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+3
+
+    8    1    6
+    3    5    7
+    4    9    2
+
+
+obelix.gaul.csd.uwo.ca[41]% prog2
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+5
+
+   17   24    1    8   15
+   23    5    7   14   16
+    4    6   13   20   22
+   10   12   19   21    3
+   11   18   25    2    9
+   
+   
+obelix.gaul.csd.uwo.ca[42]% prog2
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+7
+
+   30   39   48    1   10   19   28
+   38   47    7    9   18   27   29
+   46    6    8   17   26   35   37
+    5   14   16   25   34   36   45
+   13   15   24   33   42   44    4
+   21   23   32   41   43    3   12
+   22   31   40   49    2   11   20
+   
+   
+   
+obelix.gaul.csd.uwo.ca[43]% prog2
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+9
+
+   47   58   69   80    1   12   23   34   45
+   57   68   79    9   11   22   33   44   46
+   67   78    8   10   21   32   43   54   56
+   77    7   18   20   31   42   53   55   66
+    6   17   19   30   41   52   63   65   76
+   16   27   29   40   51   62   64   75    5
+   26   28   39   50   61   72   74    4   15
+   36   38   49   60   71   73    3   14   25
+   37   48   59   70   81    2   13   24   35
+
+
+obelix.gaul.csd.uwo.ca[45]% prog2
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+11
+
+   68   81   94  107  120    1   14   27   40   53   66
+   80   93  106  119   11   13   26   39   52   65   67
+   92  105  118   10   12   25   38   51   64   77   79
+  104  117    9   22   24   37   50   63   76   78   91
+  116    8   21   23   36   49   62   75   88   90  103
+    7   20   33   35   48   61   74   87   89  102  115
+   19   32   34   47   60   73   86   99  101  114    6
+   31   44   46   59   72   85   98  100  113    5   18
+   43   45   58   71   84   97  110  112    4   17   30
+   55   57   70   83   96  109  111    3   16   29   42
+   56   69   82   95  108  121    2   15   28   41   54
+obelix.gaul.csd.uwo.ca[46]% prog2
+
+
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+13
+
+   93  108  123  138  153  168    1   16   31   46   61   76   91
+  107  122  137  152  167   13   15   30   45   60   75   90   92
+  121  136  151  166   12   14   29   44   59   74   89  104  106
+  135  150  165   11   26   28   43   58   73   88  103  105  120
+  149  164   10   25   27   42   57   72   87  102  117  119  134
+  163    9   24   39   41   56   71   86  101  116  118  133  148
+    8   23   38   40   55   70   85  100  115  130  132  147  162
+   22   37   52   54   69   84   99  114  129  131  146  161    7
+   36   51   53   68   83   98  113  128  143  145  160    6   21
+   50   65   67   82   97  112  127  142  144  159    5   20   35
+   64   66   81   96  111  126  141  156  158    4   19   34   49
+   78   80   95  110  125  140  155  157    3   18   33   48   63
+   79   94  109  124  139  154  169    2   17   32   47   62   77
+
+
+obelix.gaul.csd.uwo.ca[47]% prog2
+Please enter the size of the magic square you would like (odd integers between 1-13 inclusive): 
+0
+That was an invalid input. Please enter an odd integer between 1 and 13 inclusive:
+-1
+That was an invalid input. Please enter an odd integer between 1 and 13 inclusive:
+2
+That was an invalid input. Please enter an odd integer between 1 and 13 inclusive:
+14
+That was an invalid input. Please enter an odd integer between 1 and 13 inclusive:
+15
+That was an invalid input. Please enter an odd integer between 1 and 13 inclusive:
+
+
+
+
+
+
+obelix.gaul.csd.uwo.ca[49]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+1
+You can pay with these bills:
+$1  x     1
+
+
+
+obelix.gaul.csd.uwo.ca[50]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+2
+You can pay with these bills:
+$2  x     1
+
+
+
+obelix.gaul.csd.uwo.ca[51]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+5
+You can pay with these bills:
+$5  x     1
+
+
+
+obelix.gaul.csd.uwo.ca[52]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+10
+You can pay with these bills:
+$10 x     1
+
+
+
+obelix.gaul.csd.uwo.ca[53]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+20
+You can pay with these bills:
+$20 x     1
+
+
+obelix.gaul.csd.uwo.ca[54]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+123
+You can pay with these bills:
+$20 x     6
+$2  x     1
+$1  x     1
+
+
+
+obelix.gaul.csd.uwo.ca[55]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+1234
+You can pay with these bills:
+$20 x    61
+$10 x     1
+$2  x     2
+
+
+obelix.gaul.csd.uwo.ca[56]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+1235
+You can pay with these bills:
+$20 x    61
+$10 x     1
+$5  x     1
+
+
+obelix.gaul.csd.uwo.ca[57]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+9999
+You can pay with these bills:
+$20 x   499
+$10 x     1
+$5  x     1
+$2  x     2
+
+
+obelix.gaul.csd.uwo.ca[58]% prog3
+Please enter a dollar amount more than zero rounded to the nearest dollar:
+0
+That was an invalid input. Please enter an integer dollar amount more than zero:
+-1
+That was an invalid input. Please enter an integer dollar amount more than zero:
+-231
+That was an invalid input. Please enter an integer dollar amount more than zero:
+dfs
+That was an invalid input. Please enter an integer dollar amount more than zero:
+
+
+

@@ -1,0 +1,19 @@
+ <div>
+ 	Modify a Showing: <br><br>
+ 	<form action="/showings_mod_submit" method="post">
+ 		 Showing ID of Showing to Modify:<br>
+    	 <input type="number" name="showingid" value=""><br>
+    	 New Date and Time(Format: YYYY-MM-DD HH:MM:SS):<br>
+    	 <input type="datetime" name="datetime" value=""><br>
+    	 New Movie ID:<br>
+    	 <input type="number" name="movieid" value=""><br>
+    	 New Room Number:<br>
+    	 <input type="number" name="roomnumber" value=""><br>
+    	 New Price:<br>
+    	 <input type="number" name="price" step="0.01" min="0.01" max="99" /><br><br>
+    	 <input type="submit" value="Submit">
+ 	</form>
+
+ 	<br> <br> <br>
+ 	<a href="staff_showings">GO BACK</a>
+ </div>

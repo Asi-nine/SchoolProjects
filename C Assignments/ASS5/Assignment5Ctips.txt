@@ -1,0 +1,9 @@
+put type and tag definition in .h
+
+dont declare variables in the dot h
+arg v is an array of char, use array to float function to convert
+part e send pointer to pointer and malloc memory for structure in function
+part d no memory alloc
+before printing output consider the failure of functions.
+makefile, start with lab makefile and modify
+test cases use int and float, not int only

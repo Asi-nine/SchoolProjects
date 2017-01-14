@@ -1,0 +1,31 @@
+<div>
+	SHOWINGS MATCHING YOUR SEARCH:<br><br>
+ <table style="width:100%">
+  <tr>
+    <th>Showing ID</th>
+    <th>Movie Name</th>    
+    <th>Genre</th>
+    <th>Date and Time</th>
+    <th>Price</th>
+
+  </tr>
+{% for stuff in stuff %}
+    <span><tr>
+    <td>{{ stuff.0 }}</td>
+    <td>{{ stuff.1 }}</td>
+    <td>{{ stuff.2 }}</td>
+    <td>{{ stuff.3 }}</td>
+    <td>{{ stuff.4 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+To buy tickets for a showing select its Showing ID below.<br><br>
+    <form action="/ticket_purchased" method="post">
+        <select name="chosenshowing">
+            {% for stuff in stuff %}
+                <option>{{ stuff.0 }}</option>
+            {% endfor %}
+            <input class="btn" type="submit" value="Submit">
+        </select><br>
+    </form>
+</div>

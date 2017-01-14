@@ -1,0 +1,5 @@
+Time:    9.9 Type: ARRIVAL      Num:    33
+Time:   11.0 Type: ALL_DONE 
+Time:    0.9 Type: ARRIVAL      Num:    16 
+Time:    0.1 Type: DEPART       Num:     8
+Time:    4.0 Type: ALL_DONE 

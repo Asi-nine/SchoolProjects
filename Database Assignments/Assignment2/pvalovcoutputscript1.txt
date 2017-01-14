@@ -1,0 +1,88 @@
+--------------
+show databases
+--------------
+
+Database
+information_schema
+mysql
+performance_schema
+pvalovcdb
+--------------
+drop database if exists pvalovcdb
+--------------
+
+--------------
+create database pvalovcdb
+--------------
+
+--------------
+show tables
+--------------
+
+--------------
+create table Customer(
+CustomerID char(3) not null unique, 
+FirstName varchar(30) not null, 
+LastName varchar(30) not null, 
+Sex char(1), 
+Email varchar(100) not null, 
+primary key (CustomerID))
+--------------
+
+--------------
+create table Movie(
+MovieID char(3) not null unique, 
+Name varchar(50) not null, 
+Year int(4), 
+primary key (MovieID))
+--------------
+
+--------------
+create table Genre(
+MovieID char(3) not null, 
+Genre varchar(20) not null, 
+primary key (MovieID, Genre), 
+foreign key (MovieID) references Movie(MovieID))
+--------------
+
+--------------
+create table TheatreRoom(
+RoomNumber int not null unique, 
+Capacity int, 
+primary key (RoomNumber))
+--------------
+
+--------------
+create table Showing(
+ShowingID char(3) not null unique, 
+Date DATE, 
+Time TIME, 
+RoomNumber int(3) not null, 
+MovieID char(3) not null, 
+primary key (ShowingID), 
+foreign key (RoomNumber) references TheatreRoom(RoomNumber), 
+foreign key (MovieID) references Movie(MovieID))
+--------------
+
+--------------
+create table GoesTo(
+ShowingID char(3) not null,
+CustomerID char(3) not null,
+Price float(6,2),
+Rating int(1),
+primary key (ShowingID, CustomerID),
+foreign key (ShowingID) references Showing(ShowingID),
+foreign key (CustomerID) references Customer(CustomerID))
+--------------
+
+--------------
+show tables
+--------------
+
+Tables_in_pvalovcdb
+Customer
+Genre
+GoesTo
+Movie
+Showing
+TheatreRoom

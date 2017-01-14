@@ -1,0 +1,82 @@
+/* File to run some given queries on a database representing a movie theatre */
+
+/* 	Author: Peter Valovcik
+	Date: Nov 11, 2016
+*/
+
+show databases;
+
+use pvalovcdb;
+
+show tables;
+
+/* Show the last name of all customers with duplicates */
+
+select LastName from Customer;
+
+/* Show the last name of all customers with duplicates */
+
+select distinct(LastName) from Customer;
+
+/* Show the first name, last name and email address of your male customers*/
+
+select FirstName, LastName, Email from Customer where Sex = "M";
+
+/* Show the movie title of all films that are comedies. */
+
+select Name from Movie, Genre where Movie.MovieID=Genre.MovieID and Genre.Genre="Comedy";
+
+/* Show the movie title and movie year of all nineties movies order in ascending order by year.*/
+
+select Name, Year from Movie where Year like "199%" order by Year;
+
+/* Show the showing date and time and the capacity of the theatre room for any time the movie Star Wars was shown. Manipulate the output to print the month out in long format (e.g. display February rather than 2) and print the time out with AM or PM. */
+
+select date_format(Date, '%M-%d-%Y') as ShowingDate, date_format(Time, '%h %i %s %p') as Showing_Time, Capacity from Showing, TheatreRoom, Movie where Movie.MovieID=Showing.MovieID and Showing.RoomNumber=TheatreRoom.RoomNumber and Movie.Name="Star Wars";
+
+/* List all movie titles that have the word "the" in their title. */
+
+select Name from Movie where Name like "%the%";
+
+/* List all the first name and last name of people who went to see a movie on or after March 1, 2016 and the name of the movie that they went to see. */
+
+select FirstName, Lastname, Name, Date from Customer, Movie, Showing, GoesTo where Customer.CustomerID=GoesTo.CustomerID and GoesTo.ShowingID=Showing.ShowingID and Showing.MovieID=Movie.MovieID and Date>"2016-02-29";
+
+/* List the first name and last name of people who went to see a sci fi movie. Don't show duplicates. */
+
+select distinct(concat_ws(' ',FirstName,LastName)) as SciFi_Customers from Customer, Showing, GoesTo, Genre where Customer.CustomerID=GoesTo.CustomerID and GoesTo.ShowingID=Showing.ShowingID and Showing.MovieID=Genre.MovieID and Genre="SciFi";
+
+/* List the movie titles of any movies that have no showings */
+
+select Name from Movie where MovieID not in (select MovieID from Showing); 
+
+/* List the movie titles of movies that have showing but no one has watched them */
+
+select Name from Movie where MovieID not in (select MovieID from Showing, GoesTo where Showing.ShowingID=GoesTo.ShowingID);
+
+/* List the movie titles of movies that have NOT been seen by a customer (either had no showings or had showings but no one watched them, be careful, because some movies had several showings, if a movie was watched at any showing, the movie title should NOT be included in your result. */
+/* Here a view is made of a union of the previous 2 queries to be used in the final select. */
+
+create view TempView as (select Name from Movie where MovieID not in (select MovieID from Showing)) union (select Name from Movie where MovieID not in (select MovieID from Showing, GoesTo where Showing.ShowingID=GoesTo.ShowingID)); 
+select distinct(Name) from TempView where Name not in (select distinct(Name) from GoesTo, Showing, Movie where GoesTo.ShowingID=Showing.ShowingID and Showing.MovieID=Movie.MovieID);
+
+show tables;
+drop view TempView;
+show tables;
+
+/* List each year a movie came out and count the number of movies that came out that year. */
+
+select Year, count(Name) as NumberOfMovies from Movie group by Year;
+
+/* Display the total sales value of all showings (add up all the sales to get a final value). */
+
+select sum(Price) as TotalSales from GoesTo;
+
+/* Find the total number of customers who attended each showing AND display the capacity of each room to see if any showing was overbooked. */
+
+create view TempView as select GoesTo.ShowingID, CustomerID, Capacity from GoesTo, Showing, TheatreRoom where GoesTo.ShowingID = Showing.ShowingID and Showing.RoomNumber =TheatreRoom.RoomNumber;
+select * from TempView;
+select ShowingID, count(CustomerID) as NumberOfCustomers, Capacity from TempView group by ShowingID;
+show tables;
+drop view TempView;
+show tables;

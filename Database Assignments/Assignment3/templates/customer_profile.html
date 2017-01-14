@@ -1,0 +1,14 @@
+<div>
+CUSTOMER PROFILE:<br><br>
+{% for customer in customer %}
+	Name: {{ customer.2 }}, {{customer.1 }}<br><br>
+	Sex: {{ customer.4 }}<br><br>
+	Email Address: {{ customer.3 }}<br><br>
+	Customer ID: {{ customer.0 }}<br><br>
+{% endfor %}
+
+Total Movies Seen: {{ movies.0 }}<br><br>
+
+Total Money Spent: {{ total.0 }}<br><br>
+
+</div>

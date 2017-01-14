@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "Please enter the number of seconds you would like to convert:"
+read input
+
+positiveintegertest=`echo "$input" | grep ".*[^0-9].*"`
+
+until [ "$input" -gt 0 2> /dev/null ] && [ "$positiveintegertest" != "$input" 2> /dev/null ] && [ "$input" -lt 86400 2> /dev/null ]
+do
+    clear
+    echo "That was not a valid number (no negatives or zero are allowed, use digits representing a positive integer)."
+    echo "Please re-enter the number of seconds you would like to convert:"
+    read input
+    positiveintegertest=`echo "$input" | grep ".*[^0-9].*"`
+done
+
+hours=`expr "$input" / 3600`
+leftoverSeconds=`expr "$input" % 3600`
+minutes=`expr "$leftoverSeconds" / 60`
+seconds=`expr "$leftoverSeconds" % 60`
+clear
+echo "Your time is $hours hours, $minutes minutes, and $seconds seconds."

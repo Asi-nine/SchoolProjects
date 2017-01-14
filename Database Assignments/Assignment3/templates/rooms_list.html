@@ -1,0 +1,16 @@
+<div>
+	ROOM LIST:<br><br>
+ <table style="width:70%">
+  <tr>
+    <th>Room Number</th>
+    <th>Capacity</th>
+  </tr>
+{% for rooms in rooms %}
+    <span><tr>
+    <td>{{ rooms.0 }}</td>
+    <td>{{ rooms.1 }}</td>
+    </tr></span>
+{% endfor %}</table><br />
+<br> <br> <br>
+    <a href="staff_rooms">GO BACK</a>
+</div>
